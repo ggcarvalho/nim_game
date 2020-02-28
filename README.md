@@ -1,6 +1,6 @@
 # Nim Game
 
-Simple implementaiton of a Nim game in Python. 
+Simple implementaiton of a Nim game in Python. [To learn more about Nim](https://en.wikipedia.org/wiki/Nim).
 
 Rules:
 
