@@ -14,6 +14,18 @@ def change_player(turn):
     else:
         print('Player 2')
 
+def select(table):
+    while True:
+        row=int(input('Select a row (1-'+str(len(table))+'): '))
+        num=int(input('Number of pieces to remove: '))
+        if not (row in range(1,len(table)+1)) or not (num>0 and num<=table[row-1]):
+            print('\nInvalid row or invalid amount o pieces to remove!\n')
+            print_table(table)
+            continue
+        else:
+            break
+    return row,num
+
 def main():
     table=[1,2,3,4,5]
     s=sum(table)
@@ -22,8 +34,7 @@ def main():
     turn=0
     while s>0:
         change_player(turn)
-        row=int(input('Select a row (1-'+str(len(table))+'): '))
-        num=int(input('Number of pieces to remove: '))
+        row,num=select(table)
         print('\n')
         table=remove(row,num,table)
         s=sum(table)
