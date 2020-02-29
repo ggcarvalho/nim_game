@@ -19,7 +19,9 @@ def select(table):
         row=int(input('Select a row (1-'+str(len(table))+'): '))
         num=int(input('Number of pieces to remove: '))
         if not (row in range(1,len(table)+1)) or not (num>0 and num<=table[row-1]):
-            print('\nInvalid row or invalid amount o pieces to remove!\n')
+            print('\n'+'#'*53)
+            print('# Invalid row or invalid amount o pieces to remove! #')
+            print('#'*53+'\n')
             print_table(table)
             continue
         else:
