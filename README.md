@@ -4,7 +4,7 @@ Simple implementaiton of a Nim game in Python. [To learn more about Nim](https:/
 
 Rules:
 
-- Players take turns to choose a row and remove any number of '#' from it.
+- Players take turns to choose a row and remove any number of 'O' from it.
 
 - Whoever takes the last piece loses the game.
 
