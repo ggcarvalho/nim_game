@@ -71,9 +71,12 @@ def main():
         if again=='y':
             table=reset_table(5)
             play(table)
-        else:
+        elif again=='n':
             print('\nThank you for playing! See you soon!\n')
             play_again=False
+        else:
+            print('Invalid answer!')
+            continue
 
 if __name__ == '__main__':
     main()
