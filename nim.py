@@ -55,9 +55,9 @@ def play(table):
         print_table(table)
         turn+=1
         if s==0:
-            print('\n####################')
+            print('\n'+'#'*10)
             change_player(turn-1)
-            print('You lose!\n####################')
+            print('You lose!\n'+'#'*10)
 
 def reset_table(n):
     return [(i+1) for i in range(n)]
