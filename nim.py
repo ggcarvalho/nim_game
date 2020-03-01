@@ -16,8 +16,8 @@ def change_player(turn):
 
 def select(table):
     while True:
-        row=int(input('Select a row (1-'+str(len(table))+'): '))
         num=int(input('Number of pieces to remove: '))
+        row=int(input('Select a row to remove from(1-'+str(len(table))+'): '))
         if not (row in range(1,len(table)+1)) or not (num>0 and num<=table[row-1]):
             print('\n'+'#'*53)
             print('# Invalid row or invalid amount o pieces to remove! #')
@@ -26,17 +26,16 @@ def select(table):
             continue
         else:
             break
-    return row,num
+    return num,row
 
-def main():
-    table=[1,2,3,4,5]
+def play(table):
     s=sum(table)
     print('\n')
     print_table(table)
     turn=0
     while s>0:
         change_player(turn)
-        row,num=select(table)
+        num,row=select(table)
         print('\n')
         table=remove(row,num,table)
         s=sum(table)
@@ -46,6 +45,23 @@ def main():
             print('\n####################')
             change_player(turn-1)
             print('You lose!\n####################')
+
+def reset_table(n):
+    return [(i+1) for i in range(n)]
+
+def main():
+    table=reset_table(5)
+    play_again=True
+    while play_again:
+        play(table)
+        again=input('\nDo you want to play it again? (y/n) ')
+        if again=='y':
+            table=reset_table(5)
+            play(table)
+        else:
+            print('\nThank you for playing! See you soon!\n')
+            play_again=False
+
 
 if __name__ == '__main__':
     main()
