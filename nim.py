@@ -10,14 +10,27 @@ def print_table(table):
 
 def change_player(turn):
     if turn%2==0:
-        print('Player 1')
+        print('Player 1\n')
     else:
-        print('Player 2')
+        print('Player 2\n')
+
+def check(table):
+    while True:
+        try:
+            num=int(input('Number of pieces to remove: '))
+            row=int(input('Select a row to remove from(1-'+str(len(table))+'): '))
+        except ValueError:
+            print('\n'+'#'*21)
+            print('# Error! Try again! #')
+            print('#'*21+'\n')
+            continue
+        else:
+            return num,row
+            break
 
 def select(table):
     while True:
-        num=int(input('Number of pieces to remove: '))
-        row=int(input('Select a row to remove from(1-'+str(len(table))+'): '))
+        num,row=check(table)
         if not (row in range(1,len(table)+1)) or not (num>0 and num<=table[row-1]):
             print('\n'+'#'*53)
             print('# Invalid row or invalid amount o pieces to remove! #')
@@ -61,7 +74,6 @@ def main():
         else:
             print('\nThank you for playing! See you soon!\n')
             play_again=False
-
 
 if __name__ == '__main__':
     main()
