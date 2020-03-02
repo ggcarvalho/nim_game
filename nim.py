@@ -1,3 +1,4 @@
+from time import sleep
 from subprocess import call
 import os
 
@@ -68,6 +69,7 @@ def play(table):
             print('\n'+'#'*10)
             change_player(turn-1)
             print('You lose!\n'+'#'*10)
+            sleep(2)
 
 def reset_table(n):
     return [(i+1) for i in range(n)]
@@ -78,6 +80,7 @@ def main():
     while play_again:
         clear()
         play(table)
+        clear()
         again=input('\nDo you want to play it again? (y/n) ')
         if again=='y':
             clear()
