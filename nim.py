@@ -1,6 +1,11 @@
+import os
+import getch
+import cursor
 from time import sleep
 from subprocess import call
-import os
+
+def wait():
+    getch.getch()
 
 def clear():
     _=call('clear' if os.name=='posix' else 'cls')
@@ -69,7 +74,10 @@ def play(table):
             print('\n'+'#'*10)
             change_player(turn-1)
             print('You lose!\n'+'#'*10)
-            sleep(2)
+            print('\nPress any key to continue')
+            cursor.hide()
+            wait()
+            cursor.show()
 
 def reset_table(n):
     return [(i+1) for i in range(n)]
@@ -87,7 +95,9 @@ def main():
             table=reset_table(5)
             play(table)
         elif again=='n':
+            clear()
             print('\nThank you for playing! See you soon!\n')
+            sleep(2)
             play_again=False
         else:
             print('Invalid answer!')
