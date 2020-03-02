@@ -97,7 +97,8 @@ def main():
         elif again=='n':
             clear()
             print('\nThank you for playing! See you soon!\n')
-            sleep(2)
+            sleep(3)
+            clear()
             play_again=False
         else:
             print('Invalid answer!')
