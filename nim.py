@@ -1,3 +1,8 @@
+from subprocess import call
+import os
+
+def clear():
+    _=call('clear' if os.name=='posix' else 'cls')
 
 def remove(row,num,table):
     if table[row-1]>=num:
@@ -20,9 +25,11 @@ def check(table):
             num=int(input('Number of pieces to remove: '))
             row=int(input('Select a row to remove from(1-'+str(len(table))+'): '))
         except ValueError:
+            clear()
             print('\n'+'#'*21)
             print('# Error! Try again! #')
             print('#'*21+'\n')
+            print_table(table)
             continue
         else:
             return num,row
@@ -32,6 +39,7 @@ def select(table):
     while True:
         num,row=check(table)
         if not (row in range(1,len(table)+1)) or not (num>0 and num<=table[row-1]):
+            clear()
             print('\n'+'#'*53)
             print('# Invalid row or invalid amount o pieces to remove! #')
             print('#'*53+'\n')
@@ -52,9 +60,11 @@ def play(table):
         print('\n')
         table=remove(row,num,table)
         s=sum(table)
+        clear()
         print_table(table)
         turn+=1
         if s==0:
+            clear()
             print('\n'+'#'*10)
             change_player(turn-1)
             print('You lose!\n'+'#'*10)
@@ -66,9 +76,11 @@ def main():
     table=reset_table(5)
     play_again=True
     while play_again:
+        clear()
         play(table)
         again=input('\nDo you want to play it again? (y/n) ')
         if again=='y':
+            clear()
             table=reset_table(5)
             play(table)
         elif again=='n':
