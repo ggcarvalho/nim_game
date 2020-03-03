@@ -1,7 +1,6 @@
 import os
 import getch
 import cursor
-from time import sleep
 from subprocess import call
 
 def wait():
@@ -97,9 +96,12 @@ def main():
         elif again=='n':
             clear()
             print('\nThank you for playing! See you soon!\n')
-            sleep(3)
-            clear()
+            print('\nPress any key to continue')
+            cursor.hide()
+            wait()
+            cursor.show()
             play_again=False
+            clear()
         else:
             print('Invalid answer!')
             continue
