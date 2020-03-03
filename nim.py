@@ -62,10 +62,10 @@ def play(table):
     while s>0:
         change_player(turn)
         num,row=select(table)
+        clear()
         print('\n')
         table=remove(row,num,table)
         s=sum(table)
-        clear()
         print_table(table)
         turn+=1
         if s==0:
